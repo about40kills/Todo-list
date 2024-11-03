@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <p>Todo List</p>
+    <div class="todo-input-grid">
+    <input placeholder="Todo name" onkeydown="handleAddKeyDown(event);"
+        class="input name"> 
+    <input type="date"
+        class="due-date date">
+    <button 
+     class="add-todo js-add-todo">Add</button>
+    </div>
+
+    <div class="todo-list todo-grid"></div>
+    <script src="./script.js"></script>
+</body>
+</html>
