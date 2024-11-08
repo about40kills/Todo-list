@@ -1,4 +1,4 @@
-const todoList = [];
+const todoList = JSON.parse(localStorage.getItem(`todoList`)) ||  [];
 
 renderTodoList();
 
@@ -23,6 +23,7 @@ document.querySelectorAll(`.js-delete-todo`)
     .forEach((deleteButton, index) => {
         deleteButton.addEventListener(`click`, () => {
             todoList.splice(index,1);
+            saveTodoList();
             renderTodoList();
         });
     });
@@ -47,11 +48,18 @@ function addTodo(){
 
     inputElement.value = ``;
 
+    saveTodoList();
     renderTodoList();
 }
 
-function handleAddKeyDown(){
+function handleAddKeyDown(event){
     if(event.key === `Enter`){
         addTodo();
     }
 }
+
+ function saveTodoList () {
+    localStorage.setItem(`todoList`, JSON.stringify(todoList));
+}
+
+document.addEventListener(`keydown`, handleAddKeyDown);
